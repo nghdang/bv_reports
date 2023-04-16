@@ -3,12 +3,12 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: root
-    property var viewModel
+    property var headerBarModel
     signal settingButtonClicked
 
     /* Left to right icons */
     Item {
-        id: logo
+        id: logoContainer
         width: parent.height
         height: parent.height
         anchors.left: parent.left
@@ -18,7 +18,7 @@ Item {
         Image {
             id: logoImage
             anchors.centerIn: parent
-            source: viewModel.LOGO_ICON
+            source: headerBarModel.LOGO_ICON
         }
 
         ColorOverlay {
@@ -31,7 +31,7 @@ Item {
 
     /* Right to left icons */
     Item {
-        id: settingButton
+        id: settingButtonContainer
         width: parent.height
         height: parent.height
         anchors.right: parent.right
@@ -41,7 +41,7 @@ Item {
         Image {
             id: settingButtonImage
             anchors.centerIn: parent
-            source: viewModel.SETTINGS_ICON
+            source: headerBarModel.SETTINGS_ICON
         }
 
         ColorOverlay {
@@ -68,6 +68,7 @@ Item {
         }
 
         MouseArea {
+            id: settingButtonMouseArea
             anchors.fill: parent
             onPressed: {
                 settingButtonImageColor.state = "pressed"
@@ -79,15 +80,19 @@ Item {
         }
     }
 
-    Rectangle {
-        id: systemTime
+    Item {
+        id: currentTimeContainer
         width: 200
         height: parent.height
-        anchors.right: settingButton.left
+        anchors.right: settingButtonContainer.left
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
-        border.color: "red"
-        border.width: 2
-        radius: 10
+
+        Text {
+            id: currentTimeText
+            anchors.centerIn: parent
+            font.pixelSize: 22
+            text: headerBarModel.currentTime
+        }
     }
 }

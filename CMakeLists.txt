@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
         application/main.cpp
         application/HeaderBarModel.cpp
         application/HeaderBarModel.hpp
+        common/Constants.hpp
         common/ViewModelDependencies.cpp
         common/ViewModelDependencies.hpp
         common/BaseViewModel.cpp

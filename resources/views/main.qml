@@ -20,7 +20,7 @@ Window {
         HeaderBar {
             id: headerBar
             anchors.fill: parent
-            viewModel: mainWindowViewModel.headerBarModel
+            headerBarModel: mainWindowViewModel.headerBarModel
             onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
         }
     }

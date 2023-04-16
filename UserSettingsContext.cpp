@@ -1,6 +1,7 @@
-#include "UserSettingsViewModel.hpp"
+#include "UserSettingsContext.hpp"
+#include "UserSettingsItemModel.hpp"
 
-UserSettingsViewModel::UserSettingsViewModel(QObject* parent) : QObject(parent)
+UserSettingsContext::UserSettingsContext()
 {
     UserSettingsItem userInfo;
     userInfo.settingId = "User Info";
@@ -21,13 +22,5 @@ UserSettingsViewModel::UserSettingsViewModel(QObject* parent) : QObject(parent)
                                                {"Jira Project", UserSettingsItem::SettingType::Value}};
     projectInfo.childrenModel->setItems(projectInfoItems);
 
-    QVector<UserSettingsItem> items{userInfo, projectInfo};
-
-    m_itemModel = QSharedPointer<UserSettingsItemModel>::create();
-    m_itemModel->setItems(items);
-}
-
-QSharedPointer<UserSettingsItemModel> UserSettingsViewModel::getItemModel()
-{
-    return m_itemModel;
+    m_menus = {userInfo, projectInfo};
 }

@@ -1,8 +1,8 @@
 #pragma once
 
+#include <QSharedPointer>
 #include <QString>
 #include <QVector>
-#include <QSharedPointer>
 
 class UserSettingsItemModel;
 

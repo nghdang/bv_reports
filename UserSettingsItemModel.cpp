@@ -1,12 +1,9 @@
 #include "UserSettingsItemModel.hpp"
 #include <iostream>
 
-UserSettingsItemModel::UserSettingsItemModel(QObject *parent)
-    : QAbstractListModel(parent)
-{
-}
+UserSettingsItemModel::UserSettingsItemModel(QObject* parent) : QAbstractListModel(parent) {}
 
-int UserSettingsItemModel::rowCount(const QModelIndex &parent) const
+int UserSettingsItemModel::rowCount(const QModelIndex& parent) const
 {
     // For list models only the root node (an invalid parent) should return the list's size. For all
     // other (valid) parents, rowCount() should return 0 so that it does not become a tree model.
@@ -17,7 +14,7 @@ int UserSettingsItemModel::rowCount(const QModelIndex &parent) const
     return m_items.size();
 }
 
-QVariant UserSettingsItemModel::data(const QModelIndex &index, int role) const
+QVariant UserSettingsItemModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -25,7 +22,8 @@ QVariant UserSettingsItemModel::data(const QModelIndex &index, int role) const
     // FIXME: Implement me!
     const auto& item = m_items.at(index.row());
 
-    switch (role) {
+    switch (role)
+    {
     case SettingIdRole:
         return QVariant(item.settingId);
     case SettingTypeRole:
@@ -53,7 +51,7 @@ QVector<UserSettingsItem> UserSettingsItemModel::getItems()
     return m_items;
 }
 
-void UserSettingsItemModel::setItems(const QVector<UserSettingsItem> &items)
+void UserSettingsItemModel::setItems(const QVector<UserSettingsItem>& items)
 {
     beginResetModel();
     m_items = items;

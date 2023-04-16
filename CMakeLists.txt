@@ -20,6 +20,8 @@ set(PROJECT_SOURCES
         UserSettingsItem.hpp
         UserSettingsItemModel.cpp
         UserSettingsItemModel.hpp
+        UserSettingsContext.cpp
+        UserSettingsContext.hpp
         UserSettingsViewModel.cpp
         UserSettingsViewModel.hpp
 )

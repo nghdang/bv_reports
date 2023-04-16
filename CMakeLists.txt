@@ -16,14 +16,14 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        qml.qrc
-        UserSettingsItem.hpp
-        UserSettingsItemModel.cpp
-        UserSettingsItemModel.hpp
-        UserSettingsContext.cpp
-        UserSettingsContext.hpp
-        UserSettingsViewModel.cpp
-        UserSettingsViewModel.hpp
+        resources/qml.qrc
+        userSettings/UserSettingsItem.hpp
+        userSettings/UserSettingsItemModel.cpp
+        userSettings/UserSettingsItemModel.hpp
+        userSettings/UserSettingsContext.cpp
+        userSettings/UserSettingsContext.hpp
+        userSettings/UserSettingsViewModel.cpp
+        userSettings/UserSettingsViewModel.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

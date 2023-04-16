@@ -1,4 +1,4 @@
-#include "UserSettingsViewModel.hpp"
+#include "userSettings/UserSettingsViewModel.hpp"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     UserSettingsViewModel userSettingsViewModel;
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/views/main.qml"));
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,
         [url](QObject* obj, const QUrl& objUrl) {

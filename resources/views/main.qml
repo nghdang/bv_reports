@@ -48,14 +48,14 @@ Window {
                                 name: "closed"
                                 PropertyChanges {
                                     target: menuButtonImage
-                                    source: "qrc:/right_arrow_46.png"
+                                    source: "qrc:/graphics/right_arrow_46.png"
                                 }
                             },
                             State {
                                 name: "openned"
                                 PropertyChanges {
                                     target: menuButtonImage
-                                    source: "qrc:/down_arrow_46.png"
+                                    source: "qrc:/graphics/down_arrow_46.png"
                                 }
                             }
                         ]

@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>down_arrow_46.png</file>
-        <file>right_arrow_46.png</file>
-    </qresource>
-</RCC>

@@ -88,11 +88,11 @@ IncludeCategories:
     SortPriority:    0
     CaseSensitive:   false
   - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
-    Priority:        3
+    Priority:        1
     SortPriority:    0
     CaseSensitive:   false
   - Regex:           '.*'
-    Priority:        1
+    Priority:        3
     SortPriority:    0
     CaseSensitive:   false
 IncludeIsMainRegex: '(Test)?$'
@@ -137,7 +137,7 @@ ReflowComments:  true
 RemoveBracesLLVM: false
 SeparateDefinitionBlocks: Leave
 ShortNamespaceLines: 1
-SortIncludes:    CaseSensitive
+SortIncludes:    CaseInsensitive
 SortJavaStaticImport: Before
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false

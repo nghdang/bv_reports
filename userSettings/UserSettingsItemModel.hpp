@@ -1,7 +1,7 @@
 #pragma once
 
-#include "UserSettingsItem.hpp"
 #include <QAbstractListModel>
+#include "UserSettingsItem.hpp"
 
 class UserSettingsItemModel : public QAbstractListModel {
     Q_OBJECT

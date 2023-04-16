@@ -1,8 +1,17 @@
 #include "UserSettingsContext.hpp"
+
 #include "UserSettingsItemModel.hpp"
 
 UserSettingsContext::UserSettingsContext()
 {
+    UserSettingsItem leaderInfo;
+    leaderInfo.settingId = "Leader Info";
+    leaderInfo.settingType = UserSettingsItem::SettingType::Menu;
+    leaderInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> leaderInfoItems{{"First Name", UserSettingsItem::SettingType::Value},
+                                              {"BSH Email", UserSettingsItem::SettingType::Value}};
+    leaderInfo.childrenModel->setItems(leaderInfoItems);
+
     UserSettingsItem userInfo;
     userInfo.settingId = "User Info";
     userInfo.settingType = UserSettingsItem::SettingType::Menu;
@@ -22,5 +31,18 @@ UserSettingsContext::UserSettingsContext()
                                                {"Jira Project", UserSettingsItem::SettingType::Value}};
     projectInfo.childrenModel->setItems(projectInfoItems);
 
-    m_menus = {userInfo, projectInfo};
+    UserSettingsItem tokenInfo;
+    tokenInfo.settingId = "Token Info";
+    tokenInfo.settingType = UserSettingsItem::SettingType::Menu;
+    tokenInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> tokenInfoItems{{"GitHub Token", UserSettingsItem::SettingType::Value},
+                                             {"Jira Token", UserSettingsItem::SettingType::Value}};
+    tokenInfo.childrenModel->setItems(tokenInfoItems);
+
+    m_menus = {leaderInfo, userInfo, projectInfo, tokenInfo};
+}
+
+QVector<UserSettingsItem> UserSettingsContext::getMenus()
+{
+    return m_menus;
 }

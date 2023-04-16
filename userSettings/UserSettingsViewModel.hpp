@@ -1,8 +1,10 @@
 #pragma once
 
-#include "UserSettingsItemModel.hpp"
+#include <memory>
 #include <QObject>
 #include <QSharedPointer>
+#include "UserSettingsContext.hpp"
+#include "UserSettingsItemModel.hpp"
 
 class UserSettingsViewModel : public QObject {
     Q_OBJECT
@@ -14,6 +16,9 @@ public:
 
 signals:
     void itemModelChanged();
+
+protected:
+    std::shared_ptr<UserSettingsContext> m_userSettingsContext;
 
 private:
     QSharedPointer<UserSettingsItemModel> m_itemModel;

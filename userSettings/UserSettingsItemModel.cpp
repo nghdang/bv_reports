@@ -1,5 +1,4 @@
 #include "UserSettingsItemModel.hpp"
-#include <iostream>
 
 UserSettingsItemModel::UserSettingsItemModel(QObject* parent) : QAbstractListModel(parent) {}
 

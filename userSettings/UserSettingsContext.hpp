@@ -7,6 +7,8 @@ public:
     UserSettingsContext();
     virtual ~UserSettingsContext() = default;
 
+    QVector<UserSettingsItem> getMenus();
+
 private:
     QVector<UserSettingsItem> m_menus;
 };

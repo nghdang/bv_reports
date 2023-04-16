@@ -7,20 +7,30 @@ Item {
     signal settingButtonClicked
 
     /* Left to right icons */
-    Rectangle {
+    Item {
         id: logo
         width: parent.height
         height: parent.height
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.verticalCenter: parent.verticalCenter
-        border.color: "red"
-        border.width: 2
-        radius: 10
+
+        Image {
+            id: logoImage
+            anchors.centerIn: parent
+            source: viewModel.LOGO_ICON
+        }
+
+        ColorOverlay {
+            id: logoImageColor
+            anchors.fill: logoImage
+            source: logoImage
+            color: "green"
+        }
     }
 
     /* Right to left icons */
-    Rectangle {
+    Item {
         id: settingButton
         width: parent.height
         height: parent.height

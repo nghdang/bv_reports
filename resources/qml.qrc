@@ -8,5 +8,8 @@
         <file>graphics/SETTINGS_MICON.png</file>
         <file>graphics/SETTINGS_SICON.png</file>
         <file>graphics/SETTINGS_LICON.png</file>
+        <file>graphics/DRAGON_SYMBOL_SICON.png</file>
+        <file>graphics/DRAGON_SYMBOL_MICON.png</file>
+        <file>graphics/DRAGON_SYMBOL_LICON.png</file>
     </qresource>
 </RCC>

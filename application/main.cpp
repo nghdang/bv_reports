@@ -1,7 +1,10 @@
-#include "userSettings/UserSettingsViewModel.hpp"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include "application/HeaderBarModel.hpp"
+#include "common/ViewModelDependencies.hpp"
+#include "mainWindow/MainWindowViewModel.hpp"
+#include "userSettings/UserSettingsViewModel.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -12,6 +15,14 @@ int main(int argc, char* argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    qRegisterMetaType<HeaderBarModel*>("HeaderBarModel");
+
+    auto headerBarModel = std::make_shared<HeaderBarModel>();
+    auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel);
+
+    MainWindowViewModel mainWindowViewModel(viewModelDependencies);
+    engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
 
     UserSettingsViewModel userSettingsViewModel;
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);

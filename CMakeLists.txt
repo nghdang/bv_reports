@@ -15,8 +15,16 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 set(PROJECT_SOURCES
-        main.cpp
         resources/qml.qrc
+        application/main.cpp
+        application/HeaderBarModel.cpp
+        application/HeaderBarModel.hpp
+        common/ViewModelDependencies.cpp
+        common/ViewModelDependencies.hpp
+        common/BaseViewModel.cpp
+        common/BaseViewModel.hpp
+        mainWindow/MainWindowViewModel.cpp
+        mainWindow/MainWindowViewModel.hpp
         userSettings/UserSettingsItem.hpp
         userSettings/UserSettingsItemModel.cpp
         userSettings/UserSettingsItemModel.hpp

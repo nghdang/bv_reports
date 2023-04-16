@@ -3,5 +3,10 @@
         <file>views/main.qml</file>
         <file>graphics/right_arrow_46.png</file>
         <file>graphics/down_arrow_46.png</file>
+        <file>views/userSettings.qml</file>
+        <file>components/HeaderBar.qml</file>
+        <file>graphics/SETTINGS_MICON.png</file>
+        <file>graphics/SETTINGS_SICON.png</file>
+        <file>graphics/SETTINGS_LICON.png</file>
     </qresource>
 </RCC>

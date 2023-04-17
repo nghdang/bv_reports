@@ -6,6 +6,7 @@ class BVReports(ConanFile):
     version = "0.0.1"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
+    requires = "nlohmann_json/3.11.2"
     export_sources = ["CMakeLists.txt", "*.cpp", "*.hpp", "*.h"]
 
     def build(self):

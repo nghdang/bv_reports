@@ -2,6 +2,9 @@
 
 #include <iomanip>
 #include <iostream>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 UserSettingsViewModel::UserSettingsViewModel(QObject* parent)
     : QObject(parent)

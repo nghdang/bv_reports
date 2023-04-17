@@ -1,5 +1,6 @@
 #include "UserSettingsViewModel.hpp"
 
+#include <iomanip>
 #include <iostream>
 
 UserSettingsViewModel::UserSettingsViewModel(QObject* parent)
@@ -10,10 +11,12 @@ UserSettingsViewModel::UserSettingsViewModel(QObject* parent)
     m_itemModel = QSharedPointer<UserSettingsItemModel>::create();
     m_itemModel->setItems(m_userSettingsContext->getMenus());
 
-    for (const auto& menu : m_userSettingsContext->getMenus())
+    for (auto& menu : m_userSettingsContext->getMenus())
     {
-        for (const auto& value : menu.childrenModel->getItems())
-            ;
+        for (auto& value : menu.valueModel->getItems())
+        {
+            m_settings.emplace(value.settingId.toStdString(), "");
+        }
     }
 }
 
@@ -25,4 +28,23 @@ QSharedPointer<UserSettingsItemModel> UserSettingsViewModel::getItemModel()
 void UserSettingsViewModel::onSettingChanged(QString settingId, QString settingValue)
 {
     std::cout << __FUNCTION__ << ": settingId = " << settingId.toStdString() << " settingValue = " << settingValue.toStdString() << std::endl;
+    m_settings.emplace(settingId.toStdString(), settingValue.toStdString());
+}
+
+void UserSettingsViewModel::onSave()
+{
+    int ncols = 100;
+    int lcols = 30;
+    int rcols = ncols - lcols - 5;
+
+    std::cout << std::string(ncols, '-') << std::endl;
+    std::cout << "|" << std::setw(lcols) << "Setting Id"
+              << " |" << std::setw(rcols) << "Setting Value"
+              << " |" << std::endl;
+    std::cout << std::string(ncols, '-') << std::endl;
+    for (const auto& setting : m_settings)
+    {
+        std::cout << "|" << std::setw(lcols) << setting.first << " |" << std::setw(rcols) << setting.second << " |" << std::endl;
+        std::cout << std::string(ncols, '-') << std::endl;
+    }
 }

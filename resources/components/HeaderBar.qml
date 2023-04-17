@@ -61,7 +61,7 @@ Item {
                     name: "pressed"
                     PropertyChanges {
                         target: settingButtonImageColor
-                        color: "lightblue"
+                        color: "purple"
                     }
                 }
             ]

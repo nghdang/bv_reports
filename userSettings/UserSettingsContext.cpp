@@ -5,28 +5,36 @@
 UserSettingsContext::UserSettingsContext()
 {
     UserSettingsItem leaderInfo;
-    leaderInfo.settingId = "Leader Info";
-    leaderInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
-    QVector<UserSettingsItem> leaderInfoItems{{"First Name"}, {"BSH Email"}};
-    leaderInfo.childrenModel->setItems(leaderInfoItems);
+    leaderInfo.settingId = "LeaderInfo";
+    leaderInfo.settingLabel = "Leader Info";
+    leaderInfo.valueModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> leaderInfoItems{{"LeaderInfo.FirstName", "First Name"}, {"LeaderInfo.BSHEmail", "BSH Email"}};
+    leaderInfo.valueModel->setItems(leaderInfoItems);
 
     UserSettingsItem userInfo;
-    userInfo.settingId = "User Info";
-    userInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
-    QVector<UserSettingsItem> userInfoItems{{"First Name"}, {"Last Name"}, {"BSH Email"}};
-    userInfo.childrenModel->setItems(userInfoItems);
+    userInfo.settingId = "UserInfo";
+    userInfo.settingLabel = "User Info";
+    userInfo.valueModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> userInfoItems{
+        {"UserInfo.FirstName", "First Name"}, {"UserInfo.LastName", "Last Name"}, {"UserInfo.BSHEmail", "BSH Email"}};
+    userInfo.valueModel->setItems(userInfoItems);
 
     UserSettingsItem projectInfo;
-    projectInfo.settingId = "Project Info";
-    projectInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
-    QVector<UserSettingsItem> projectInfoItems{{"Full Name"}, {"Short Name"}, {"GitHub Repo"}, {"Jira Project"}};
-    projectInfo.childrenModel->setItems(projectInfoItems);
+    projectInfo.settingId = "ProjectInfo";
+    projectInfo.settingLabel = "Project Info";
+    projectInfo.valueModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> projectInfoItems{{"ProjectInfo.FullName", "Full Name"},
+                                               {"ProjectInfo.ShortName", "Short Name"},
+                                               {"ProjectInfo.GitHubRepo", "GitHub Repo"},
+                                               {"ProjectInfo.JiraProject", "Jira Project"}};
+    projectInfo.valueModel->setItems(projectInfoItems);
 
     UserSettingsItem tokenInfo;
-    tokenInfo.settingId = "Token Info";
-    tokenInfo.childrenModel = QSharedPointer<UserSettingsItemModel>::create();
-    QVector<UserSettingsItem> tokenInfoItems{{"GitHub Token"}, {"Jira Token"}};
-    tokenInfo.childrenModel->setItems(tokenInfoItems);
+    tokenInfo.settingId = "TokenInfo";
+    tokenInfo.settingLabel = "Token Info";
+    tokenInfo.valueModel = QSharedPointer<UserSettingsItemModel>::create();
+    QVector<UserSettingsItem> tokenInfoItems{{"TokenInfo.GitHubToken", "GitHub Token"}, {"TokenInfo.JiraToken", "Jira Token"}};
+    tokenInfo.valueModel->setItems(tokenInfoItems);
 
     m_menus = {leaderInfo, userInfo, projectInfo, tokenInfo};
 }

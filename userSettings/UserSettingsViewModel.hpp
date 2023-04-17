@@ -19,11 +19,12 @@ signals:
 
 public slots:
     void onSettingChanged(QString settingId, QString settingValue);
+    void onSave();
 
 protected:
     std::shared_ptr<UserSettingsContext> m_userSettingsContext;
 
 private:
     QSharedPointer<UserSettingsItemModel> m_itemModel;
-    std::map<QString, QString> m_settings;
+    std::map<std::string, std::string> m_settings;
 };

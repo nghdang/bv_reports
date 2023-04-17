@@ -21,7 +21,7 @@ Column {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 22
-                text: settingId
+                text: settingLabel
             }
 
             TextField {

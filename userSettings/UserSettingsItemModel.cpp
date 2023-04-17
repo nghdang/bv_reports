@@ -28,8 +28,10 @@ QVariant UserSettingsItemModel::data(const QModelIndex& index, int role) const
     {
     case SettingIdRole:
         return QVariant(item.settingId);
+    case SettingLabelRole:
+        return QVariant(item.settingLabel);
     case ValueModelRole:
-        return QVariant::fromValue(item.childrenModel);
+        return QVariant::fromValue(item.valueModel);
     }
 
     return QVariant();
@@ -40,6 +42,7 @@ QHash<int, QByteArray> UserSettingsItemModel::roleNames() const
     QHash<int, QByteArray> roles;
 
     roles[SettingIdRole] = "settingId";
+    roles[SettingLabelRole] = "settingLabel";
     roles[ValueModelRole] = "valueModel";
 
     return roles;

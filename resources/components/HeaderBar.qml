@@ -18,7 +18,7 @@ Item {
         Image {
             id: logoImage
             anchors.centerIn: parent
-            source: headerBarModel.LOGO_ICON
+            source: GraphicId.ICNID_DRAGON_SYMBOL_MICON
         }
 
         ColorOverlay {
@@ -41,7 +41,7 @@ Item {
         Image {
             id: settingButtonImage
             anchors.centerIn: parent
-            source: headerBarModel.SETTINGS_ICON
+            source: GraphicId.ICNID_SETTINGS_MICON
         }
 
         ColorOverlay {

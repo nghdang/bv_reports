@@ -25,14 +25,14 @@ Column {
                         name: "collapsed"
                         PropertyChanges {
                             target: menuButtonImage
-                            source: "qrc:/graphics/RIGHT_ARROW_SICON.png"
+                            source: GraphicId.ICNID_RIGHT_ARROW_SICON
                         }
                     },
                     State {
                         name: "uncollapsed"
                         PropertyChanges {
                             target: menuButtonImage
-                            source: "qrc:/graphics/DOWN_ARROW_SICON.png"
+                            source: GraphicId.ICNID_DOWN_ARROW_SICON
                         }
                     }
                 ]

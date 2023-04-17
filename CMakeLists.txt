@@ -17,6 +17,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         resources/qml.qrc
         application/main.cpp
+        application/GraphicId.cpp
+        application/GraphicId.hpp
         application/HeaderBarModel.cpp
         application/HeaderBarModel.hpp
         common/Constants.hpp

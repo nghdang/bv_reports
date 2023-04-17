@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(bv_reports VERSION 0.1 LANGUAGES CXX)
+project(bv_reports LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -8,9 +8,21 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Download automatically, you can also just copy the conan.cmake file
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/conan.cmake")
+   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+   file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
+                  "${CMAKE_SOURCE_DIR}/conan.cmake")
+endif()
+configure_file("${CMAKE_SOURCE_DIR}/conan.cmake" "${CMAKE_BINARY_DIR}/conan.cmake" COPYONLY)
+include("${CMAKE_BINARY_DIR}/conan.cmake")
+
+conan_cmake_run(CONANFILE conanfile.py BASIC_SETUP CMAKE_TARGETS)
+
+set(CMAKE_PREFIX_PATH "/opt/Qt5.12.12/5.12.12/gcc_64/lib/cmake/Qt5")
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
@@ -64,12 +76,6 @@ target_compile_definitions(bv_reports
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(bv_reports
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
-
-set_target_properties(bv_reports PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(bv_reports)

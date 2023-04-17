@@ -51,14 +51,21 @@ Item {
                 name: "released"
                 PropertyChanges {
                     target: saveButton
-                    color: "lightgrey"
+                    color: "green"
                 }
             },
             State {
                 name: "pressed"
                 PropertyChanges {
                     target: saveButton
-                    color: "grey"
+                    color: "darkgreen"
+                }
+            },
+            State {
+                name: "hovered"
+                PropertyChanges {
+                    target: saveButton
+                    color: "lightgreen"
                 }
             }
         ]
@@ -67,11 +74,15 @@ Item {
             anchors.centerIn: parent
             font.bold: true
             font.pixelSize: 22
+            color: "white"
             text: qsTr("Save")
         }
 
         MouseArea {
             anchors.fill: parent
+            hoverEnabled: true
+            onEntered: saveButton.state = "hovered"
+            onExited: saveButton.state = "released"
             onPressed: saveButton.state = "pressed"
             onReleased: {
                 saveButton.state = "released"

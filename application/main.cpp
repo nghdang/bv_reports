@@ -1,11 +1,13 @@
+#include <iostream>
 #include <QGuiApplication>
+#include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include "application/GraphicId.hpp"
 #include "application/HeaderBarModel.hpp"
 #include "common/ViewModelDependencies.hpp"
 #include "mainWindow/MainWindowViewModel.hpp"
 #include "userSettings/UserSettingsViewModel.hpp"
-#include "application/GraphicId.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -14,6 +16,8 @@ int main(int argc, char* argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    auto windowIcon = QIcon(":" + GraphicId::ICNID_DRAGON_SYMBOL_LICON().path());
+    app.setWindowIcon(windowIcon);
 
     QQmlApplicationEngine engine;
 

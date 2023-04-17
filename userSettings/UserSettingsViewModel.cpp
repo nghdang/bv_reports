@@ -1,5 +1,6 @@
 #include "UserSettingsViewModel.hpp"
 
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <nlohmann/json.hpp>
@@ -40,6 +41,8 @@ void UserSettingsViewModel::onSave()
     int lcols = 30;
     int rcols = ncols - lcols - 5;
 
+    json userSettings;
+
     std::cout << std::string(ncols, '-') << std::endl;
     std::cout << "|" << std::setw(lcols) << "Setting Id"
               << " |" << std::setw(rcols) << "Setting Value"
@@ -47,7 +50,13 @@ void UserSettingsViewModel::onSave()
     std::cout << std::string(ncols, '-') << std::endl;
     for (const auto& setting : m_settings)
     {
+        userSettings[setting.first] = setting.second;
         std::cout << "|" << std::setw(lcols) << setting.first << " |" << std::setw(rcols) << setting.second << " |" << std::endl;
         std::cout << std::string(ncols, '-') << std::endl;
     }
+
+    std::ofstream ofs(SETTINGS_FILENAME, std::ofstream::out);
+    ofs << std::setw(4) << userSettings << std::endl;
+
+    ofs.close();
 }

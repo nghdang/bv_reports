@@ -8,14 +8,7 @@ class UserSettingsItemModel;
 
 struct UserSettingsItem {
 
-    enum SettingType {
-        Menu,
-        Value
-    };
-
     QString settingId;
-
-    SettingType settingType;
 
     QSharedPointer<UserSettingsItemModel> childrenModel;
 };

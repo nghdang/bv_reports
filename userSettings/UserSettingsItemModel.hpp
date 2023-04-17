@@ -11,7 +11,6 @@ class UserSettingsItemModel : public QAbstractListModel {
 public:
     enum entryRoles {
         SettingIdRole,
-        SettingTypeRole,
         ValueModelRole
     };
 

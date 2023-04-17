@@ -10,38 +10,28 @@ Window {
     visible: true
     title: mainWindowViewModel.title
 
-    Item {
-        id: headerContainer
+    HeaderBar {
+        id: headerBar
         width: parent.width
         height: 50
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-
-        HeaderBar {
-            id: headerBar
-            anchors.fill: parent
-            headerBarModel: mainWindowViewModel.headerBarModel
-            onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
-        }
+        headerBarModel: mainWindowViewModel.headerBarModel
+        onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
     }
 
-    Item {
-        id: contentContainer
+    Loader {
+        id: contentLoader
         width: parent.width
-        height: parent.height - headerContainer.height
-        anchors.top: headerContainer.bottom
+        height: parent.height - headerBar.height
+        anchors.top: headerBar.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-
-        Rectangle {
-            anchors.fill: parent
-            color: "lightgreen"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    console.log("mainWindowViewModel:" + mainWindowViewModel)
-                    console.log("mainWindowViewModel.headerBarModel:"
-                                + mainWindowViewModel.headerBarModel)
-                }
+        source: {
+            switch (mainWindowViewModel.activeViewName) {
+            case "UserSettings":
+                return "qrc:/views/userSettings.qml"
+            default:
+                return "qrc:/views/userSettings.qml"
             }
         }
     }

@@ -1,6 +1,9 @@
 #include "UserSettingsItemModel.hpp"
 
-UserSettingsItemModel::UserSettingsItemModel(QObject* parent) : QAbstractListModel(parent) {}
+UserSettingsItemModel::UserSettingsItemModel(QObject* parent)
+    : QAbstractListModel(parent)
+{
+}
 
 int UserSettingsItemModel::rowCount(const QModelIndex& parent) const
 {
@@ -25,8 +28,6 @@ QVariant UserSettingsItemModel::data(const QModelIndex& index, int role) const
     {
     case SettingIdRole:
         return QVariant(item.settingId);
-    case SettingTypeRole:
-        return QVariant(item.settingType);
     case ValueModelRole:
         return QVariant::fromValue(item.childrenModel);
     }
@@ -39,7 +40,6 @@ QHash<int, QByteArray> UserSettingsItemModel::roleNames() const
     QHash<int, QByteArray> roles;
 
     roles[SettingIdRole] = "settingId";
-    roles[SettingTypeRole] = "settingType";
     roles[ValueModelRole] = "valueModel";
 
     return roles;

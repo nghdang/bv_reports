@@ -79,6 +79,7 @@ Item {
         }
 
         MouseArea {
+            id: saveButtonMouseArea
             anchors.fill: parent
             hoverEnabled: true
             onEntered: saveButton.state = "hovered"
@@ -86,6 +87,7 @@ Item {
             onPressed: saveButton.state = "pressed"
             onReleased: {
                 saveButton.state = "released"
+
                 userSettingsViewModel.onSave()
             }
         }

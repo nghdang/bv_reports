@@ -12,6 +12,7 @@ public:
     enum entryRoles {
         SettingIdRole,
         SettingLabelRole,
+        SettingValueRole,
         ValueModelRole
     };
 

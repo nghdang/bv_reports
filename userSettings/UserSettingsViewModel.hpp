@@ -27,5 +27,4 @@ protected:
 private:
     QSharedPointer<UserSettingsItemModel> m_itemModel;
     std::map<std::string, std::string> m_settings;
-    const std::string SETTINGS_FILENAME{"userSettings.json"};
 };

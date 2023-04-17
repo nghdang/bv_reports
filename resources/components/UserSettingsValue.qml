@@ -35,7 +35,8 @@ Column {
                     border.width: 2
                     radius: 10
                 }
-                onEditingFinished: root.settingChanged(valueText.text, text)
+                text: settingValue
+                onEditingFinished: root.settingChanged(settingId, text)
             }
         }
     }

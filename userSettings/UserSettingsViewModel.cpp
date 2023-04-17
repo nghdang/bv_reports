@@ -32,7 +32,7 @@ QSharedPointer<UserSettingsItemModel> UserSettingsViewModel::getItemModel()
 void UserSettingsViewModel::onSettingChanged(QString settingId, QString settingValue)
 {
     std::cout << __FUNCTION__ << ": settingId = " << settingId.toStdString() << " settingValue = " << settingValue.toStdString() << std::endl;
-    m_settings.emplace(settingId.toStdString(), settingValue.toStdString());
+    m_settings[settingId.toStdString()] = settingValue.toStdString();
 }
 
 void UserSettingsViewModel::onSave()
@@ -41,8 +41,6 @@ void UserSettingsViewModel::onSave()
     int lcols = 30;
     int rcols = ncols - lcols - 5;
 
-    json userSettings;
-
     std::cout << std::string(ncols, '-') << std::endl;
     std::cout << "|" << std::setw(lcols) << "Setting Id"
               << " |" << std::setw(rcols) << "Setting Value"
@@ -50,13 +48,9 @@ void UserSettingsViewModel::onSave()
     std::cout << std::string(ncols, '-') << std::endl;
     for (const auto& setting : m_settings)
     {
-        userSettings[setting.first] = setting.second;
         std::cout << "|" << std::setw(lcols) << setting.first << " |" << std::setw(rcols) << setting.second << " |" << std::endl;
         std::cout << std::string(ncols, '-') << std::endl;
     }
 
-    std::ofstream ofs(SETTINGS_FILENAME, std::ofstream::out);
-    ofs << std::setw(4) << userSettings << std::endl;
-
-    ofs.close();
+    m_userSettingsContext->saveToJson(m_settings);
 }

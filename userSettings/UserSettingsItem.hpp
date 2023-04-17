@@ -12,5 +12,7 @@ struct UserSettingsItem {
 
     QString settingLabel;
 
+    QString settingValue;
+
     QSharedPointer<UserSettingsItemModel> valueModel;
 };

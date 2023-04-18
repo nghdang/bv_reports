@@ -66,7 +66,7 @@ Item {
                 name: "hovered"
                 PropertyChanges {
                     target: saveButton
-                    color: "lightgreen"
+                    color: "forestgreen"
                 }
             }
         ]

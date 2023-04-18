@@ -19,7 +19,7 @@ UserSettingsViewModel::UserSettingsViewModel(QObject* parent)
     {
         for (auto& value : menu.valueModel->getItems())
         {
-            m_settings.emplace(value.settingId.toStdString(), "");
+            m_settings.emplace(value.settingId.toStdString(), value.settingValue.toStdString());
         }
     }
 }

@@ -19,7 +19,7 @@ Column {
             Image {
                 id: menuButtonImage
                 anchors.centerIn: parent
-                state: "collapsed"
+                state: "uncollapsed"
                 states: [
                     State {
                         name: "collapsed"
@@ -84,6 +84,6 @@ Column {
     Loader {
         id: valueLoader
         anchors.left: parent.left
-        visible: false
+        visible: true
     }
 }

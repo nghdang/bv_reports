@@ -19,20 +19,19 @@ int main(int argc, char* argv[])
     auto windowIcon = QIcon(":" + GraphicId::ICNID_DRAGON_SYMBOL_LICON().path());
     app.setWindowIcon(windowIcon);
 
-    QQmlApplicationEngine engine;
-
     qRegisterMetaType<HeaderBarModel*>("HeaderBarModel");
 
     GraphicId graphicId;
-    engine.rootContext()->setContextProperty("GraphicId", &graphicId);
 
     auto headerBarModel = std::make_shared<HeaderBarModel>();
     auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel);
 
     MainWindowViewModel mainWindowViewModel(viewModelDependencies);
-    engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
-
     UserSettingsViewModel userSettingsViewModel;
+
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("GraphicId", &graphicId);
+    engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);
 
     const QUrl url(QStringLiteral("qrc:/views/main.qml"));

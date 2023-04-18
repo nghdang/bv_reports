@@ -23,8 +23,8 @@ include("${CMAKE_BINARY_DIR}/conan.cmake")
 conan_cmake_run(CONANFILE conanfile.py BASIC_SETUP CMAKE_TARGETS)
 
 set(CMAKE_PREFIX_PATH "/opt/Qt5.12.12/5.12.12/gcc_64/lib/cmake/Qt5")
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Scxml REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Scxml REQUIRED)
 
 set(PROJECT_SOURCES
         resources/qml.qrc
@@ -47,6 +47,10 @@ set(PROJECT_SOURCES
         userSettings/UserSettingsContext.hpp
         userSettings/UserSettingsViewModel.cpp
         userSettings/UserSettingsViewModel.hpp
+        viewManagement/ViewManager.cpp
+        viewManagement/ViewManager.hpp
+        viewManagement/ViewModelConfiguration.hpp
+        viewManagement/WindowConfiguration.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -75,7 +79,7 @@ endif()
 target_compile_definitions(bv_reports
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(bv_reports
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Scxml)
 target_link_libraries(bv_reports PRIVATE CONAN_PKG::nlohmann_json)
 
 if(QT_VERSION_MAJOR EQUAL 6)

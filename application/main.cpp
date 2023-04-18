@@ -8,6 +8,7 @@
 #include "common/ViewModelDependencies.hpp"
 #include "mainWindow/MainWindowViewModel.hpp"
 #include "userSettings/UserSettingsViewModel.hpp"
+#include "viewManagement/ViewManager.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -19,30 +20,41 @@ int main(int argc, char* argv[])
     auto windowIcon = QIcon(":" + GraphicId::ICNID_DRAGON_SYMBOL_LICON().path());
     app.setWindowIcon(windowIcon);
 
+    ViewManager viewManager;
+    viewManager.initialize();
+
     qRegisterMetaType<HeaderBarModel*>("HeaderBarModel");
 
     GraphicId graphicId;
+    viewManager.getEngine()->rootContext()->setContextProperty("GraphicId", &graphicId);
 
     auto headerBarModel = std::make_shared<HeaderBarModel>();
     auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel);
 
-    MainWindowViewModel mainWindowViewModel(viewModelDependencies);
-    UserSettingsViewModel userSettingsViewModel;
+    viewManager.initializeWindow([&](WindowConfiguration& windowConfiguration) {
+        windowConfiguration.viewName = QStringLiteral("MainWindow");
+        windowConfiguration.fsmStateName = QStringLiteral("MainWindow");
+        windowConfiguration.propertyName = QStringLiteral("mainWindowViewModel");
+        windowConfiguration.windowViewModelCreator = [&]() -> BaseViewModel* { return new MainWindowViewModel(viewModelDependencies); };
+    });
 
-    QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("GraphicId", &graphicId);
-    engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
-    engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);
+    viewManager.registerViewModel([&](ViewModelConfiguration& viewModelConfiguration) {
+        viewModelConfiguration.viewName = QStringLiteral("UserSettingsViewModel");
+        viewModelConfiguration.fsmStateName = QStringLiteral("UserSettingsViewModel");
+        viewModelConfiguration.propertyName = QStringLiteral("userSettingsViewModel");
+        viewModelConfiguration.viewModelCreator = [&]() -> BaseViewModel* { return new UserSettingsViewModel(viewModelDependencies); };
+    });
 
+    auto engine = viewManager.getEngine();
     const QUrl url(QStringLiteral("qrc:/views/main.qml"));
     QObject::connect(
-        &engine, &QQmlApplicationEngine::objectCreated, &app,
+        engine, &QQmlApplicationEngine::objectCreated, &app,
         [url](QObject* obj, const QUrl& objUrl) {
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
-    engine.load(url);
+    engine->load(url);
 
     return app.exec();
 }

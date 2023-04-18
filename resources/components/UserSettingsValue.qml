@@ -15,7 +15,7 @@ Column {
             height: 50
 
             Text {
-                id: valueText
+                id: valueLabel
                 width: 140
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
@@ -25,8 +25,8 @@ Column {
             }
 
             TextField {
-                id: value
-                width: root.width - valueText.width
+                id: valueValue
+                width: root.width - valueLabel.width
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 22
@@ -36,7 +36,11 @@ Column {
                     radius: 10
                 }
                 text: settingValue
-                onEditingFinished: root.settingChanged(settingId, text)
+                onEditingFinished: {
+                    root.settingChanged(settingId, displayText)
+                }
+                enabled: settingValue.length === 0 || settingId.startsWith(
+                             "LeaderInfo") === false
             }
         }
     }

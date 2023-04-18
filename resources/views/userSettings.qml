@@ -16,6 +16,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         clip: true
         spacing: 10
+        cacheBuffer: 1000
         model: userSettingsViewModel.itemModel
         delegate: UserSettingsMenu {
             id: menuDelegate
@@ -26,7 +27,7 @@ Item {
                 width: menuDelegate.width - 2 * menuDelegate.spacing
                 spacing: 10
                 model: valueModel
-                onSettingChanged: (settingId, settingValue) => userSettingsViewModel.onSettingChanged(
+                onSettingChanged: userSettingsViewModel.onSettingChanged(
                                       settingId, settingValue)
             }
         }
@@ -87,7 +88,7 @@ Item {
             onPressed: saveButton.state = "pressed"
             onReleased: {
                 saveButton.state = "released"
-
+                focus = true
                 userSettingsViewModel.onSave()
             }
         }

@@ -4,7 +4,7 @@
 
 MainWindowViewModel::MainWindowViewModel(std::shared_ptr<ViewModelDependencies> viewModelDependencies, QObject* parent)
     : BaseViewModel(viewModelDependencies, parent)
-    , m_activeViewName("MainWindow")
+    , m_activeViewName("Welcome")
 {
 }
 

@@ -31,7 +31,7 @@ Item {
 
                 text: settingLabel
                 buttonIcon: GraphicId.ICNID_DRAGON_SYMBOL_MICON
-                dropIcon: menuButton.checked ? GraphicId.ICNID_DOWN_ARROW_LICON : GraphicId.ICNID_RIGHT_ARROW_LICON
+                dropIcon: menuButton.checked ? GraphicId.ICNID_DOWN_ARROW_MICON : GraphicId.ICNID_RIGHT_ARROW_MICON
             }
 
             Loader {
@@ -39,7 +39,7 @@ Item {
                 visible: menuButton.checked
                 sourceComponent: UserSettingsValue {
                     width: menuDelegate.width - 2 * menuDelegate.spacing
-                    spacing: 10
+                    spacing: 1
                     model: valueModel
                     onSettingChanged: userSettingsViewModel.onSettingChanged(
                                           settingId, settingValue)

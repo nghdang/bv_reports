@@ -21,6 +21,7 @@ Column {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignRight
                 font.pixelSize: 22
+                color: "grey"
                 text: settingLabel
             }
 
@@ -30,9 +31,10 @@ Column {
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 22
+                color: enabled ? "darkgrey" : "grey"
                 background: Rectangle {
-                    border.color: "green"
-                    border.width: 2
+                    border.color: "transparent"
+                    color: "#333"
                     radius: 10
                 }
                 text: settingValue

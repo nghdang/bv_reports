@@ -13,22 +13,37 @@ Item {
         width: parent.width
         anchors.top: parent.top
         anchors.bottom: saveButton.top
+        anchors.bottomMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         clip: true
-        spacing: 10
+        spacing: 1
         cacheBuffer: 1000
         model: userSettingsViewModel.itemModel
-        delegate: UserSettingsMenu {
+        delegate: Column {
             id: menuDelegate
-            width: root.width
-            spacing: 10
-            menuText: settingLabel
-            valueDelegate: UserSettingsValue {
-                width: menuDelegate.width - 2 * menuDelegate.spacing
-                spacing: 10
-                model: valueModel
-                onSettingChanged: userSettingsViewModel.onSettingChanged(
-                                      settingId, settingValue)
+            width: menuListView.width
+            spacing: 1
+
+            DropdownButton {
+                id: menuButton
+                width: menuDelegate.width
+                height: menuListView.height * 0.20
+
+                text: settingLabel
+                buttonIcon: GraphicId.ICNID_DRAGON_SYMBOL_MICON
+                dropIcon: menuButton.checked ? GraphicId.ICNID_DOWN_ARROW_LICON : GraphicId.ICNID_RIGHT_ARROW_LICON
+            }
+
+            Loader {
+                id: valueLoader
+                visible: menuButton.checked
+                sourceComponent: UserSettingsValue {
+                    width: menuDelegate.width - 2 * menuDelegate.spacing
+                    spacing: 10
+                    model: valueModel
+                    onSettingChanged: userSettingsViewModel.onSettingChanged(
+                                          settingId, settingValue)
+                }
             }
         }
 
@@ -45,8 +60,8 @@ Item {
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        text: qsTr("Save")
         hoverEnabled: true
+        text: qsTr("Save")
         contentItem: Text {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

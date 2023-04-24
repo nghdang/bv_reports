@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.0
 import QtGraphicalEffects 1.0
 
 Item {
@@ -30,67 +31,48 @@ Item {
     }
 
     /* Right to left icons */
-    Item {
-        id: settingButtonContainer
+    Button {
+        id: settingButton
         width: parent.height
         height: parent.height
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
-
-        Image {
-            id: settingButtonImage
-            anchors.centerIn: parent
-            source: GraphicId.ICNID_SETTINGS_MICON
-        }
-
-        ColorOverlay {
-            id: settingButtonImageColor
-            anchors.fill: settingButtonImage
-            source: settingButtonImage
-            state: "released"
-            states: [
-                State {
-                    name: "released"
-                    PropertyChanges {
-                        target: settingButtonImageColor
-                        color: "blue"
-                    }
-                },
-                State {
-                    name: "pressed"
-                    PropertyChanges {
-                        target: settingButtonImageColor
-                        color: "purple"
-                    }
-                }
-            ]
-        }
-
-        MouseArea {
-            id: settingButtonMouseArea
-            anchors.fill: parent
-            onPressed: {
-                settingButtonImageColor.state = "pressed"
+        hoverEnabled: true
+        contentItem: Item {
+            id: name
+            Image {
+                id: settingButtonImage
+                anchors.centerIn: parent
+                source: GraphicId.ICNID_SETTINGS_MICON
             }
-            onReleased: {
-                settingButtonImageColor.state = "released"
-                settingButtonClicked()
+
+            ColorOverlay {
+                id: settingButtonImageColor
+                anchors.fill: settingButtonImage
+                source: settingButtonImage
+                color: settingButton.pressed ? "grey" : settingButton.hovered ? "lightgrey" : "darkgrey"
             }
         }
+        background: Rectangle {
+            color: "black"
+        }
+
+        onClicked: settingButtonClicked()
     }
 
     Item {
         id: currentTimeContainer
         width: 200
         height: parent.height
-        anchors.right: settingButtonContainer.left
+        anchors.right: settingButton.left
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
 
         Text {
             id: currentTimeText
             anchors.centerIn: parent
+            color: "lightgrey"
             font.pixelSize: 22
             text: headerBarModel.currentTime
         }

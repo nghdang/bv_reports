@@ -37,7 +37,7 @@ Item {
         }
     }
 
-    Rectangle {
+    Button {
         id: saveButton
         width: 120
         height: 50
@@ -45,52 +45,26 @@ Item {
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        radius: 10
-        state: "released"
-        states: [
-            State {
-                name: "released"
-                PropertyChanges {
-                    target: saveButton
-                    color: "green"
-                }
-            },
-            State {
-                name: "pressed"
-                PropertyChanges {
-                    target: saveButton
-                    color: "darkgreen"
-                }
-            },
-            State {
-                name: "hovered"
-                PropertyChanges {
-                    target: saveButton
-                    color: "forestgreen"
-                }
-            }
-        ]
-
-        Text {
-            anchors.centerIn: parent
+        text: qsTr("Save")
+        hoverEnabled: true
+        contentItem: Text {
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+            text: saveButton.text
             font.bold: true
             font.pixelSize: 22
             color: "white"
-            text: qsTr("Save")
         }
-
-        MouseArea {
-            id: saveButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onEntered: saveButton.state = "hovered"
-            onExited: saveButton.state = "released"
-            onPressed: saveButton.state = "pressed"
-            onReleased: {
-                saveButton.state = "released"
-                focus = true
-                userSettingsViewModel.onSave()
-            }
+        background: Rectangle {
+            border.color: "transparent"
+            border.width: 2
+            color: saveButton.down ? "darkgreen" : saveButton.hovered ? "forestgreen" : "green"
+            radius: 10
+        }
+        onClicked: {
+            focus = true
+            userSettingsViewModel.onSave()
         }
     }
 }

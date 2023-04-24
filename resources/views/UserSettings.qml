@@ -30,7 +30,6 @@ Item {
                 height: menuListView.height * 0.20
 
                 text: settingLabel
-                buttonIcon: GraphicId.ICNID_DRAGON_SYMBOL_MICON
                 dropIcon: menuButton.checked ? GraphicId.ICNID_DOWN_ARROW_MICON : GraphicId.ICNID_RIGHT_ARROW_MICON
             }
 

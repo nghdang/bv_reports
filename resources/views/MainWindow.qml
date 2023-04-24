@@ -9,6 +9,7 @@ Window {
     height: 480
     visible: true
     title: mainWindowViewModel.title
+    color: "black"
 
     HeaderBar {
         id: headerBar
@@ -23,15 +24,16 @@ Window {
     Loader {
         id: contentLoader
         width: parent.width
-        height: parent.height - headerBar.height
+        height: parent.height - headerBar.height - 10
         anchors.top: headerBar.bottom
+        anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         source: {
             switch (mainWindowViewModel.activeViewName) {
             case "UserSettings":
-                return "qrc:/views/userSettings.qml"
+                return "qrc:/views/UserSettings.qml"
             default:
-                return "qrc:/views/userSettings.qml"
+                return "qrc:/views/UserSettings.qml"
             }
         }
     }

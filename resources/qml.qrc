@@ -1,9 +1,9 @@
 <RCC>
     <qresource prefix="/">
-        <file>views/main.qml</file>
+        <file>views/MainWindow.qml</file>
         <file>graphics/RIGHT_ARROW_MICON.png</file>
         <file>graphics/DOWN_ARROW_MICON.png</file>
-        <file>views/userSettings.qml</file>
+        <file>views/UserSettings.qml</file>
         <file>components/HeaderBar.qml</file>
         <file>graphics/SETTINGS_MICON.png</file>
         <file>graphics/SETTINGS_SICON.png</file>
@@ -16,6 +16,6 @@
         <file>graphics/RIGHT_ARROW_LICON.png</file>
         <file>graphics/RIGHT_ARROW_SICON.png</file>
         <file>components/UserSettingsValue.qml</file>
-        <file>components/UserSettingsMenu.qml</file>
+        <file>components/DropdownButton.qml</file>
     </qresource>
 </RCC>

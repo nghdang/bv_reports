@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);
 
-    const QUrl url(QStringLiteral("qrc:/views/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/views/MainWindow.qml"));
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,
         [url](QObject* obj, const QUrl& objUrl) {

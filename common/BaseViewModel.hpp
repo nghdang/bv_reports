@@ -5,6 +5,8 @@
 
 class HeaderBarModel;
 
+class UserSettingsContext;
+
 class BaseViewModel : public QObject {
     Q_OBJECT
 public:
@@ -13,4 +15,6 @@ public:
 
 protected:
     std::shared_ptr<HeaderBarModel> m_headerBarModel;
+
+    std::shared_ptr<UserSettingsContext> m_userSettingsContext;
 };

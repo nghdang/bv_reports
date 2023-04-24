@@ -7,6 +7,7 @@
 #include "application/HeaderBarModel.hpp"
 #include "common/ViewModelDependencies.hpp"
 #include "mainWindow/MainWindowViewModel.hpp"
+#include "userSettings/UserSettingsContext.hpp"
 #include "userSettings/UserSettingsViewModel.hpp"
 
 int main(int argc, char* argv[])
@@ -24,10 +25,11 @@ int main(int argc, char* argv[])
     GraphicId graphicId;
 
     auto headerBarModel = std::make_shared<HeaderBarModel>();
-    auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel);
+    auto userSettingsContext = std::make_shared<UserSettingsContext>();
+    auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel, userSettingsContext);
 
     MainWindowViewModel mainWindowViewModel(viewModelDependencies);
-    UserSettingsViewModel userSettingsViewModel;
+    UserSettingsViewModel userSettingsViewModel(viewModelDependencies);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("GraphicId", &graphicId);

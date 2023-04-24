@@ -29,9 +29,9 @@ Window {
         source: {
             switch (mainWindowViewModel.activeViewName) {
             case "UserSettings":
-                return "qrc:/views/userSettings.qml"
+                return "qrc:/views/UserSettings.qml"
             default:
-                return "qrc:/views/userSettings.qml"
+                return "qrc:/views/UserSettings.qml"
             }
         }
     }

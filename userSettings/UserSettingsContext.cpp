@@ -17,6 +17,12 @@ QVector<UserSettingsItem> UserSettingsContext::getMenus()
     return m_menus;
 }
 
+bool UserSettingsContext::hasSettingsSaved()
+{
+    struct stat buffer;
+    return stat(SETTINGS_FILENAME.c_str(), &buffer) == 0;
+}
+
 void UserSettingsContext::saveToJson(std::map<std::string, std::string> persistentSettings)
 {
     nlohmann::json settingsJson;
@@ -35,8 +41,7 @@ void UserSettingsContext::saveToJson(std::map<std::string, std::string> persiste
 std::map<std::string, std::string> UserSettingsContext::loadFromJson()
 {
     std::map<std::string, std::string> persistentSettings;
-    struct stat buffer;
-    if (stat(SETTINGS_FILENAME.c_str(), &buffer) == 0)
+    if (hasSettingsSaved())
     {
         std::ifstream ifs(SETTINGS_FILENAME);
         auto settingsJson = nlohmann::json::parse(ifs);

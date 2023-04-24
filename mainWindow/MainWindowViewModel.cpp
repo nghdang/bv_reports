@@ -1,11 +1,12 @@
 #include "MainWindowViewModel.hpp"
 
 #include <iostream>
+#include "userSettings/UserSettingsContext.hpp"
 
 MainWindowViewModel::MainWindowViewModel(std::shared_ptr<ViewModelDependencies> viewModelDependencies, QObject* parent)
     : BaseViewModel(viewModelDependencies, parent)
-    , m_activeViewName("Welcome")
 {
+    m_activeViewName = m_userSettingsContext->hasSettingsSaved() ? "UserSettings" : "Welcome";
 }
 
 HeaderBarModel* MainWindowViewModel::getHeaderBarModel()

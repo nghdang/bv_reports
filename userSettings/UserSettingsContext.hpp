@@ -9,6 +9,8 @@ public:
 
     QVector<UserSettingsItem> getMenus();
 
+    bool hasSettingsSaved();
+
     void saveToJson(std::map<std::string, std::string> settings);
 
 private:

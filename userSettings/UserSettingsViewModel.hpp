@@ -3,15 +3,16 @@
 #include <memory>
 #include <QObject>
 #include <QSharedPointer>
+#include "common/BaseViewModel.hpp"
 #include "UserSettingsContext.hpp"
 #include "UserSettingsItemModel.hpp"
 
-class UserSettingsViewModel : public QObject {
+class UserSettingsViewModel : public BaseViewModel {
     Q_OBJECT
 
     Q_PROPERTY(QSharedPointer<UserSettingsItemModel> itemModel READ getItemModel NOTIFY itemModelChanged)
 public:
-    explicit UserSettingsViewModel(QObject* parent = nullptr);
+    explicit UserSettingsViewModel(std::shared_ptr<ViewModelDependencies> viewModelDependencies, QObject* parent = nullptr);
     QSharedPointer<UserSettingsItemModel> getItemModel();
 
 signals:
@@ -20,9 +21,6 @@ signals:
 public slots:
     void onSettingChanged(QString settingId, QString settingValue);
     void onSave();
-
-protected:
-    std::shared_ptr<UserSettingsContext> m_userSettingsContext;
 
 private:
     QSharedPointer<UserSettingsItemModel> m_itemModel;

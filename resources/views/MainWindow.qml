@@ -17,6 +17,7 @@ Window {
         height: 50
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+        visible: mainWindowViewModel.activeViewName !== "Welcome"
         headerBarModel: mainWindowViewModel.headerBarModel
         onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
     }
@@ -33,7 +34,7 @@ Window {
             case "UserSettings":
                 return "qrc:/views/UserSettings.qml"
             default:
-                return "qrc:/views/UserSettings.qml"
+                return "qrc:/views/Welcome.qml"
             }
         }
     }

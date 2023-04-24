@@ -7,11 +7,9 @@
 
 using json = nlohmann::json;
 
-UserSettingsViewModel::UserSettingsViewModel(QObject* parent)
-    : QObject(parent)
+UserSettingsViewModel::UserSettingsViewModel(std::shared_ptr<ViewModelDependencies> viewModelDependencies, QObject* parent)
+    : BaseViewModel(viewModelDependencies, parent)
 {
-    m_userSettingsContext = std::make_shared<UserSettingsContext>();
-
     m_itemModel = QSharedPointer<UserSettingsItemModel>::create();
     m_itemModel->setItems(m_userSettingsContext->getMenus());
 

@@ -17,5 +17,6 @@
         <file>graphics/RIGHT_ARROW_SICON.png</file>
         <file>components/UserSettingsValue.qml</file>
         <file>components/DropdownButton.qml</file>
+        <file>views/Welcome.qml</file>
     </qresource>
 </RCC>

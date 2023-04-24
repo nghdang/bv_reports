@@ -20,6 +20,7 @@ public:
     QString getActiveViewName();
 
 public slots:
+    void enterFirstUse();
     void enterUserSettings();
 
 signals:

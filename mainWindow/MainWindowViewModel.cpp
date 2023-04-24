@@ -24,6 +24,12 @@ QString MainWindowViewModel::getActiveViewName()
     return m_activeViewName;
 }
 
+void MainWindowViewModel::enterFirstUse()
+{
+    m_activeViewName = "FirstUse";
+    emit activeViewNameChanged();
+}
+
 void MainWindowViewModel::enterUserSettings()
 {
     m_activeViewName = "UserSettings";

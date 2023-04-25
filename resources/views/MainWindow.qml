@@ -8,7 +8,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: mainWindowViewModel.title
+    title: Constants.APPLICATION_TITLE
     color: "black"
 
     HeaderBar {
@@ -17,7 +17,7 @@ Window {
         height: 50
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: mainWindowViewModel.activeViewName !== "Welcome"
+        visible: mainWindowViewModel.activeViewName !== Constants.VIEW_NAME_WELCOME
         headerBarModel: mainWindowViewModel.headerBarModel
         onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
     }
@@ -31,7 +31,7 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
         source: {
             switch (mainWindowViewModel.activeViewName) {
-            case "UserSettings":
+            case Constants.VIEW_NAME_USER_SETTINGS:
                 return "qrc:/views/UserSettings.qml"
             default:
                 return "qrc:/views/Welcome.qml"

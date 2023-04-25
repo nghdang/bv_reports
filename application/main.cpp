@@ -5,6 +5,7 @@
 #include <QQmlContext>
 #include "application/GraphicId.hpp"
 #include "application/HeaderBarModel.hpp"
+#include "common/Constants.hpp"
 #include "common/ViewModelDependencies.hpp"
 #include "mainWindow/MainWindowViewModel.hpp"
 #include "userSettings/UserSettingsContext.hpp"
@@ -22,6 +23,7 @@ int main(int argc, char* argv[])
 
     qRegisterMetaType<HeaderBarModel*>("HeaderBarModel");
 
+    Constants::QmlConstants qmlConstants;
     GraphicId graphicId;
 
     auto headerBarModel = std::make_shared<HeaderBarModel>();
@@ -32,6 +34,7 @@ int main(int argc, char* argv[])
     UserSettingsViewModel userSettingsViewModel(viewModelDependencies);
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("Constants", &qmlConstants);
     engine.rootContext()->setContextProperty("GraphicId", &graphicId);
     engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);

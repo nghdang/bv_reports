@@ -33,6 +33,7 @@ set(PROJECT_SOURCES
         application/GraphicId.hpp
         application/HeaderBarModel.cpp
         application/HeaderBarModel.hpp
+        common/Constants.cpp
         common/Constants.hpp
         common/ViewModelDependencies.cpp
         common/ViewModelDependencies.hpp

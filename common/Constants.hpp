@@ -24,6 +24,8 @@ class QmlConstants : public QObject {
 
     Q_PROPERTY(QString VIEW_NAME_WELCOME READ VIEW_NAME_WELCOME CONSTANT)
 
+    Q_PROPERTY(QString VIEW_NAME_FIRST_USE READ VIEW_NAME_FIRST_USE CONSTANT)
+
     Q_PROPERTY(QString VIEW_NAME_USER_SETTINGS READ VIEW_NAME_USER_SETTINGS CONSTANT)
 public:
     explicit QmlConstants(QObject* parent = nullptr);
@@ -32,6 +34,8 @@ public:
     QString APPLICATION_TITLE();
 
     QString VIEW_NAME_WELCOME();
+
+    QString VIEW_NAME_FIRST_USE();
 
     QString VIEW_NAME_USER_SETTINGS();
 };

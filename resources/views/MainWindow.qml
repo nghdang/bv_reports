@@ -18,6 +18,7 @@ Window {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         visible: mainWindowViewModel.activeViewName !== Constants.VIEW_NAME_WELCOME
+                 && mainWindowViewModel.activeViewName !== Constants.VIEW_NAME_FIRST_USE
         headerBarModel: mainWindowViewModel.headerBarModel
         onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
     }
@@ -30,12 +31,19 @@ Window {
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         source: {
+            let sourceUrl
             switch (mainWindowViewModel.activeViewName) {
             case Constants.VIEW_NAME_USER_SETTINGS:
-                return "qrc:/views/UserSettings.qml"
+                sourceUrl = "qrc:/views/UserSettings.qml"
+                break
+            case Constants.VIEW_NAME_FIRST_USE:
+                sourceUrl = "qrc:/views/FirstUse.qml"
+                break
             default:
-                return "qrc:/views/Welcome.qml"
+                sourceUrl = "qrc:/views/Welcome.qml"
+                break
             }
+            return sourceUrl
         }
     }
 }

@@ -18,5 +18,6 @@
         <file>components/UserSettingsValue.qml</file>
         <file>components/DropdownButton.qml</file>
         <file>views/Welcome.qml</file>
+        <file>views/FirstUse.qml</file>
     </qresource>
 </RCC>

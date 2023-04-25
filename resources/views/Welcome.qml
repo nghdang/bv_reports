@@ -53,7 +53,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: mainWindowViewModel.enterUserSettings()
+            onClicked: mainWindowViewModel.enterFirstUse()
         }
     }
 }

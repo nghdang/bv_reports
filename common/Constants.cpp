@@ -17,6 +17,11 @@ QString QmlConstants::VIEW_NAME_WELCOME()
     return Constants::VIEW_NAME_WELCOME;
 }
 
+QString QmlConstants::VIEW_NAME_FIRST_USE()
+{
+    return Constants::VIEW_NAME_FIRST_USE;
+}
+
 QString QmlConstants::VIEW_NAME_USER_SETTINGS()
 {
     return Constants::VIEW_NAME_USER_SETTINGS;

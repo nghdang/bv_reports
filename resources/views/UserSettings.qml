@@ -51,7 +51,7 @@ Item {
         }
     }
 
-    Button {
+    ControlButton {
         id: saveButton
         width: 120
         height: 50
@@ -59,23 +59,7 @@ Item {
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        hoverEnabled: true
         text: qsTr("Save")
-        contentItem: Text {
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            elide: Text.ElideRight
-            text: saveButton.text
-            font.bold: true
-            font.pixelSize: 22
-            color: "white"
-        }
-        background: Rectangle {
-            border.color: "transparent"
-            border.width: 2
-            color: saveButton.down ? "darkgreen" : saveButton.hovered ? "forestgreen" : "green"
-            radius: 10
-        }
         onClicked: {
             focus = true
             userSettingsViewModel.onSave()

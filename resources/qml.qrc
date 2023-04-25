@@ -19,5 +19,6 @@
         <file>components/DropdownButton.qml</file>
         <file>views/Welcome.qml</file>
         <file>views/FirstUse.qml</file>
+        <file>components/ControlButton.qml</file>
     </qresource>
 </RCC>

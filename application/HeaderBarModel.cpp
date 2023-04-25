@@ -5,6 +5,7 @@
 
 HeaderBarModel::HeaderBarModel(QObject* parent)
     : QObject(parent)
+    , m_isSettingIconVisible{true}
 {
     m_currentTime = QDateTime::currentDateTime().toString(Constants::CURRENT_TIME_FORMAT);
 

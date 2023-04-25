@@ -7,6 +7,7 @@
 #include "application/HeaderBarModel.hpp"
 #include "common/Constants.hpp"
 #include "common/ViewModelDependencies.hpp"
+#include "firstUse/FirstUseViewModel.hpp"
 #include "mainWindow/MainWindowViewModel.hpp"
 #include "userSettings/UserSettingsContext.hpp"
 #include "userSettings/UserSettingsViewModel.hpp"
@@ -31,12 +32,14 @@ int main(int argc, char* argv[])
     auto viewModelDependencies = std::make_shared<ViewModelDependencies>(headerBarModel, userSettingsContext);
 
     MainWindowViewModel mainWindowViewModel(viewModelDependencies);
+    FirstUseViewModel firstUseViewModel(viewModelDependencies);
     UserSettingsViewModel userSettingsViewModel(viewModelDependencies);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("Constants", &qmlConstants);
     engine.rootContext()->setContextProperty("GraphicId", &graphicId);
     engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
+    engine.rootContext()->setContextProperty("firstUseViewModel", &firstUseViewModel);
     engine.rootContext()->setContextProperty("userSettingsViewModel", &userSettingsViewModel);
 
     const QUrl url(QStringLiteral("qrc:/views/MainWindow.qml"));

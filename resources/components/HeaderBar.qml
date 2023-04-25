@@ -58,7 +58,6 @@ Item {
         background: Rectangle {
             color: "black"
         }
-
         onClicked: settingIconClicked()
     }
 
@@ -66,7 +65,7 @@ Item {
         id: currentTimeContainer
         width: 200
         height: parent.height
-        anchors.right: settingIcon.left
+        anchors.right: settingIcon.visible ? settingIcon.left : parent.right
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
 

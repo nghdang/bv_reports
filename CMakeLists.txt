@@ -48,6 +48,8 @@ set(PROJECT_SOURCES
         userSettings/UserSettingsContext.hpp
         userSettings/UserSettingsViewModel.cpp
         userSettings/UserSettingsViewModel.hpp
+        firstUse/FirstUseViewModel.cpp
+        firstUse/FirstUseViewModel.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 Item {
     id: root
     property var headerBarModel
-    signal settingButtonClicked
+    signal settingIconClicked
 
     /* Left to right icons */
     Item {
@@ -32,40 +32,41 @@ Item {
 
     /* Right to left icons */
     Button {
-        id: settingButton
+        id: settingIcon
         width: parent.height
         height: parent.height
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
         hoverEnabled: true
+        visible: headerBarModel.isSettingIconVisible
         contentItem: Item {
             id: name
             Image {
-                id: settingButtonImage
+                id: settingIconImage
                 anchors.centerIn: parent
                 source: GraphicId.ICNID_SETTINGS_MICON
             }
 
             ColorOverlay {
-                id: settingButtonImageColor
-                anchors.fill: settingButtonImage
-                source: settingButtonImage
-                color: settingButton.pressed ? "grey" : settingButton.hovered ? "lightgrey" : "darkgrey"
+                id: settingIconImageColor
+                anchors.fill: settingIconImage
+                source: settingIconImage
+                color: settingIcon.pressed ? "grey" : settingIcon.hovered ? "lightgrey" : "darkgrey"
             }
         }
         background: Rectangle {
             color: "black"
         }
 
-        onClicked: settingButtonClicked()
+        onClicked: settingIconClicked()
     }
 
     Item {
         id: currentTimeContainer
         width: 200
         height: parent.height
-        anchors.right: settingButton.left
+        anchors.right: settingIcon.left
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
 

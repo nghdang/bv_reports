@@ -21,3 +21,17 @@ QString HeaderBarModel::getCurrentTime()
 {
     return m_currentTime;
 }
+
+bool HeaderBarModel::getIsSettingIconVisible()
+{
+    return m_isSettingIconVisible;
+}
+
+void HeaderBarModel::setIsSettingIconVisible(bool value)
+{
+    if (value != m_isSettingIconVisible)
+    {
+        m_isSettingIconVisible = value;
+        emit isSettingIconVisibleChanged();
+    }
+}

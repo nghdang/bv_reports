@@ -18,9 +18,8 @@ Window {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         visible: mainWindowViewModel.activeViewName !== Constants.VIEW_NAME_WELCOME
-                 && mainWindowViewModel.activeViewName !== Constants.VIEW_NAME_FIRST_USE
         headerBarModel: mainWindowViewModel.headerBarModel
-        onSettingButtonClicked: mainWindowViewModel.enterUserSettings()
+        onSettingIconClicked: mainWindowViewModel.enterUserSettings()
     }
 
     Loader {
